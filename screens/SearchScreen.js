@@ -1,10 +1,10 @@
-import { FlatList, StyleSheet, Text, View } from 'react-native';
+import { FlatList, Pressable, StyleSheet, Text, View } from 'react-native';
 import React, { useState } from 'react';
 import SearchBar from '../components/SearchBar';
 import Article from '../components/Article';
 import axios from 'axios';
 
-const SearchScreen = () => {
+const SearchScreen = (props) => {
   const [searchText, setSearchText] = useState('');
   const [articles, setArticles] = useState('');
 
@@ -34,20 +34,22 @@ const SearchScreen = () => {
         setSearchText={setSearchText}
         onSubmit={searchArticle}
       />
-      <FlatList
-        data={articles}
-        renderItem={({ item }) => (
-          <Article
-            urlToImage={item.urlToImage}
-            title={item.title}
-            description={item.description}
-            author={item.author}
-            publishedAt={item.publishedAt}
-            sourceName={item.source.name}
-          />
-        )}
-        keyExtractor={(item) => item.title}
-      />
+      <Pressable oonPress={goToArticle}>
+        <FlatList
+          data={articles}
+          renderItem={({ item }) => (
+            <Article
+              urlToImage={item.urlToImage}
+              title={item.title}
+              description={item.description}
+              author={item.author}
+              publishedAt={item.publishedAt}
+              sourceName={item.source.name}
+            />
+          )}
+          keyExtractor={(item) => item.title}
+        />
+      </Pressable>
     </View>
   );
 };
