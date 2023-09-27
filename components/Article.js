@@ -1,34 +1,30 @@
 import { StyleSheet, Text, View, SafeAreaView, Image } from 'react-native';
 import React from 'react';
+import moment from 'moment';
 
-const Article = () => {
+const Article = (props) => {
   return (
     <SafeAreaView style={styles.container}>
       <Image
         source={{
-          uri: 'https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
+          uri: props.urlToImage,
         }}
         style={styles.image}
       />
-      <View style={{ padding: 16 }}>
-        <Text style={styles.title}>
-          Tech News about coding Language Application using react-native
-        </Text>
+      <View style={{ padding: 16 }}> 
+        <Text style={styles.title}>{props.title}</Text>
 
-        <Text style={styles.description}>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cumque,
-          ipsam nam molestias perspiciatis explicabo non natus cupiditate,
-          perferendis rerum,
-        </Text>
+        <Text style={styles.description} numberOfLines={3}>{props.description}</Text>
         <View style={styles.data}>
           <Text style={styles.by}>
-            By: <Text style={styles.author}>Digital Zoro</Text>
+            By: <Text style={styles.author}>{props.author}</Text>
           </Text>
-          <Text style={styles.date}>Feb 22nd 2023</Text>
+          <Text style={styles.date}>{moment(props.publishedAt).format("MMM DD YY")}</Text>
         </View>
         <View style={styles.source}>
           <Text style={styles.sourceText}>
-            Source: <Text style={styles.sourceAuthor}> TechZoro</Text>
+            Source:{' '}
+            <Text style={styles.sourceAuthor}> {props.sourceName}</Text>
           </Text>
         </View>
       </View>
@@ -59,7 +55,7 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 19,
     fontWeight: '600',
-    marginTop: 10,
+    // marginTop: 5,
   },
   description: {
     fontSize: 17,
