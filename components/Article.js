@@ -1,34 +1,42 @@
-import { StyleSheet, Text, View, SafeAreaView, Image } from 'react-native';
+import { StyleSheet, Text, View, Image, Pressable } from 'react-native';
 import React from 'react';
 import moment from 'moment';
+import * as WebBrowser from 'expo-web-browser';
 
 const Article = (props) => {
+  const goToArticle = () => {
+    WebBrowser.openBrowserAsync(props.url);
+  };
+
   return (
-    <SafeAreaView style={styles.container}>
+    <Pressable style={styles.container} onPress={goToArticle}>
       <Image
         source={{
           uri: props.urlToImage,
         }}
         style={styles.image}
       />
-      <View style={{ padding: 16 }}> 
+      <View style={{ padding: 16 }}>
         <Text style={styles.title}>{props.title}</Text>
 
-        <Text style={styles.description} numberOfLines={3}>{props.description}</Text>
+        <Text style={styles.description} numberOfLines={3}>
+          {props.description}
+        </Text>
         <View style={styles.data}>
           <Text style={styles.by}>
             By: <Text style={styles.author}>{props.author}</Text>
           </Text>
-          <Text style={styles.date}>{moment(props.publishedAt).format("MMM DD YY")}</Text>
+          <Text style={styles.date}>
+            {moment(props.publishedAt).format('MMM DD YY')}
+          </Text>
         </View>
         <View style={styles.source}>
           <Text style={styles.sourceText}>
-            Source:{' '}
-            <Text style={styles.sourceAuthor}> {props.sourceName}</Text>
+            Source: <Text style={styles.sourceAuthor}> {props.sourceName}</Text>
           </Text>
         </View>
       </View>
-    </SafeAreaView>
+    </Pressable>
   );
 };
 

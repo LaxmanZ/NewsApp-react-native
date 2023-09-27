@@ -17,7 +17,7 @@ export default function App() {
         }}
       >
         <Tab.Screen
-          name="Home"
+          name='SportsNews'
           component={HomeScreen}
           options={{
             tabBarIcon: () => <Entypo name="home" size={24} color="black" />,

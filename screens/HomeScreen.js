@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { StyleSheet, Text, View, ScrollView, FlatList } from 'react-native';
+import { StyleSheet, FlatList } from 'react-native';
 import Article from '../components/Article';
 import axios from 'axios';
 import { SafeAreaView } from 'react-native';
@@ -21,13 +21,12 @@ const HomeScreen = () => {
       )
       .then((response) => {
         setArticles(response.data.articles);
-        setIsLoading(false)
+        setIsLoading(false);
       })
       .catch(function (error) {
         console.log(error);
       })
-      .finally(function () {
-      });
+      .finally(function () {});
   };
   useEffect(() => {
     getNews();
@@ -35,7 +34,11 @@ const HomeScreen = () => {
   return (
     <SafeAreaView>
       {isLoading ? (
-        <ActivityIndicator color='red' size="large" style={styles.loadingIndicator} />
+        <ActivityIndicator
+          color="red"
+          size="large"
+          style={styles.loadingIndicator}
+        />
       ) : (
         <FlatList
           data={articles}
@@ -47,6 +50,7 @@ const HomeScreen = () => {
               author={item.author}
               publishedAt={item.publishedAt}
               sourceName={item.source.name}
+              url={item.url}
             />
           )}
           keyExtractor={(item) => item.title}
@@ -60,4 +64,5 @@ export default HomeScreen;
 
 const styles = StyleSheet.create({
   container: {},
+  
 });
