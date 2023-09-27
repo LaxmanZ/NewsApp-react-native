@@ -34,7 +34,7 @@ const SearchScreen = (props) => {
         setSearchText={setSearchText}
         onSubmit={searchArticle}
       />
-      <Pressable oonPress={goToArticle}>
+      <Pressable onPress={props.goToArticle}>
         <FlatList
           data={articles}
           renderItem={({ item }) => (
@@ -45,6 +45,7 @@ const SearchScreen = (props) => {
               author={item.author}
               publishedAt={item.publishedAt}
               sourceName={item.source.name}
+              url={item.url}
             />
           )}
           keyExtractor={(item) => item.title}
