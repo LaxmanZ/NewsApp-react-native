@@ -59,6 +59,7 @@ const styles = StyleSheet.create({
     height: 200,
     borderTopRightRadius: 40,
     borderTopLeftRadius: 40,
+    objectFit: 'contain',
   },
   title: {
     fontSize: 19,
