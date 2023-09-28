@@ -33,10 +33,10 @@ Follow these steps to get the NewsApp up and running on your local development e
 1. **Clone the repository:**
 
    ```bash
-   git clone https://github.com/LaxmanZ/food-recipe-app.git
+   git clone https://github.com/LaxmanZ/NewsApp.git
    
 2. Navigate to the project directory:
-   cd food-recipe-app
+   cd NewsApp
 
 3. Install dependencies:
    npm install
